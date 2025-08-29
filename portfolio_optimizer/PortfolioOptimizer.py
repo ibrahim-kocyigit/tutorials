@@ -51,26 +51,3 @@ class PortfolioOptimizer:
         min_loss = l_values[min_loss_index]
 
         return float(optimal_w), float(min_loss)
-
-
-if __name__ == "__main__":
-    # Data loading and preparation
-    try:
-        price_data = pd.read_csv("./prices.csv")
-        prices_A = np.array(price_data["price_supplier_a_dollars_per_item"])
-        prices_B = np.array(price_data["price_supplier_b_dollars_per_item"])
-    except:
-        print(
-            "Error: prices.csv not found. Please ensure that the fie is in the correct directory."
-        )
-        exit()
-
-    # Analysis
-    optimizer = PortfolioOptimizer(prices_A, prices_B)
-    optimum_weight, optimum_loss = optimizer.find_optimal_weight()
-
-    # Results
-    print("--- Optimal Portfolio (Minimum Variance Strategy) ---")
-    print(f"Optimal percentage from Supplier A: {optimum_weight:.0%}")
-    print(f"Optimal percentage from Supplier B: {1 - optimum_weight:.0%}")
-    print(f"Resulting Minimum Cost Variance: {optimum_loss:.2f}")
