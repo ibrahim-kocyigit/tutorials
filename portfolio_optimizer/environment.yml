@@ -1,7 +1,0 @@
-name: portfolio_optimizer
-channels:
-  - defaults
-dependencies:
-  - python=3.13.5 
-  - pandas
-  - numpy
